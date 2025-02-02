@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { FaInstagram } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa6";
 import { MdOutlineEmail } from "react-icons/md";
@@ -8,20 +9,26 @@ const Footer = () => {
   return (
     <footer className=" w-screen bg-black py-5">
       {/* Top Section - Name and Copyright */}
-      <div className="text-center mb-3">
+      <motion.div className="text-center mb-3" initial={{ x: -100, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.9 }} >
         <p className="text-lg text-[#ffff] font-semibold">Vensero Detailing © 2024</p>
-      </div>
+      </motion.div>
       
       {/* Middle Section - Logo */}
-      <div className="flex justify-center mb-3">
+      <motion.div className="flex justify-center mb-3"  initial={{ x: 100, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ duration: 1 }}>
         <img 
           src={Footer_logo} // Replace with your logo image URL
           alt="Logo "
           className="h-28 "
         />
-      </div>
+      </motion.div>
       {/* Bottom Section - Social Media Icons */}
-      <div className="flex justify-center space-x-6 mb-2">
+      <motion.div className="flex justify-center space-x-6 mb-2"  initial={{ x: -100, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ duration: 1.1 }}>
         <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
           <FaInstagram className="text-2xl text-cyan-600 "/> {/* Replace with actual Instagram icon */}
         </a>
@@ -31,7 +38,7 @@ const Footer = () => {
         <a href="mailto:someone@example.com" >
           <MdOutlineEmail alt="Email" className="text-2xl text-cyan-600 " /> {/* Replace with actual Email icon */}
         </a>
-      </div>
+      </motion.div>
     </footer>
   );
 };

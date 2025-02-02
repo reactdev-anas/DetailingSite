@@ -72,6 +72,7 @@
 
 
 import React from 'react'
+import { motion } from 'framer-motion'
 import TeflonImage from '../../images/Teflon_card_image.jpg'
 import CeramicImage from '../../images/Ceramic_card_image.jpg'
 import InteriorImage from '../../images/Interior_card_image.jpg'
@@ -91,20 +92,22 @@ const HomeCards = () => {
         <div className="py-10 ">
             <div className="container  mx-auto px-4">
                 {/* Responsive Grid Layout with controlled gap */}
-                <div className="grid grid-cols-1  sm:grid-cols-2 md:grid-cols-2 1024:grid-cols-2 1280:grid-cols-3  md:gap-7 gap-8 overflow-hidden">
-                    {cardData.map((card) => {
+                <motion.div className="grid grid-cols-1  sm:grid-cols-2 md:grid-cols-2 1024:grid-cols-2 1280:grid-cols-3  md:gap-7 gap-8 overflow-hidden"  >
+                    {cardData.map((card,index) => {
                         return (
-                            <div key={card.id} className="w-full  820:w-[375px] 912:w-96 1024:w-full sm:w-80 1280:w-[365px] lg:mb-3 mx-auto  p-4 rounded-lg shadow-lg transition-transform transform hover:scale-105">
+                            <motion.div key={card.id} className="w-full  820:w-[375px] 912:w-96 1024:w-full sm:w-80 1280:w-[365px] lg:mb-3 mx-auto  p-4 rounded-lg shadow-lg transition-transform transform hover:scale-105"  initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
+                            whileInView={{ x: 0, opacity: 1 }}
+                            transition={{ duration:0.6, delay: index * 0.1, ease:'easeOut'}}>
                                 {/* Image */}
                                 <img src={card.image} className="w-full h-48 object-cover rounded-md mb-4" alt="card_image" />
                                 {/* Title */}
                                 <h2 className="text-lg font-semibold text-gray-800 mb-2">{card.title}</h2>
                                 {/* Full Description */}
                                 <p className="text-sm text-gray-600 leading-relaxed tracking-wide`">{card.descp}</p>
-                            </div>
+                            </motion.div>
                         );
                     })}
-                </div>
+                </motion.div>
             </div>
         </div>
     );

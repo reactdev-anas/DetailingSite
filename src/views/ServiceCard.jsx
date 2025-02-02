@@ -90,12 +90,17 @@
   
 //   export default ServiceCard;
 
-const ServiceCard = ({ service }) => {
+import { motion } from "framer-motion";
+const ServiceCard = ({ service,index }) => {
     // Accessing image conditionally based on whether 'plans' exists
     const serviceImage = service.image || (service.plans?.[0]?.image);
   
     return (
-      <div className="cursor-pointer hover:shadow-xl  ease-in-out delay-100 912:w-96 1280:w-80 1280:h-80 768:w-80 1024:w-96 transition shadow-2xl 540:w-[420px]  w-80  h-96 rounded mx-auto text-gray-600">
+      <motion.div className="cursor-pointer hover:shadow-xl  ease-in-out delay-100 912:w-96 1280:w-80 1280:h-80 768:w-80 1024:w-96 transition shadow-2xl 540:w-[420px]  w-80  h-96 rounded mx-auto text-gray-600" 
+      initial={{ opacity: 0, }}
+      whileInView={{ opacity: 1,  }}
+      transition={{ duration: 1.2, delay: index * 0.2 }}
+    >
         {/* Displaying the image correctly */}
         <img className="w-full h-[55%]  transform duration-300 cursor-pointer hover:scale-105 
          rounded transition delay-75 ease-in-out  object-center" src={serviceImage} alt={service.name} />
@@ -155,10 +160,13 @@ const ServiceCard = ({ service }) => {
             </ul>
           </div>
         )}
-      </div>
+      </motion.div>
     );
   };
   
   export default ServiceCard;
   
   
+
+
+

@@ -1,4 +1,5 @@
 import React from 'react'
+import { motion } from 'framer-motion';
 import ServiceCard from './ServiceCard'
 import WaxCoatImage from '../images/Wax_coat_image.jpg';
 import FullDetailingWork from '../images/Full_detailing_image.jpg'
@@ -92,10 +93,12 @@ const data = {
 }
   return (
     <div className='pt-4'>
-      <div className='text-center overflow-y-hidden my-5'>  <span className='text-red-600 text-4xl my-4 font-semibold'>3M </span> <span className='text-4xl my-4'>Product work</span></div>
-    <div className=" grid grid-cols-1 sm:grid-cols-2 1280:grid-cols-3 1024:grid-cols-2 gap-10 text-white w-screen h-auto  p-3 ">
+      <motion.div className='text-center overflow-y-hidden my-5'initial={{ y: -50, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8 }} > <span className='text-red-600 text-4xl my-4 font-semibold' >3M </span> <span className='text-4xl my-4' >Product work</span></motion.div>
+    <div className=" grid grid-cols-1 sm:grid-cols-2 1280:grid-cols-3 1024:grid-cols-2 gap-10 text-white w-screen h-auto  p-3 " >
     {data.services.map((service, index) => (
-      <ServiceCard key={index} service={service} />
+      <ServiceCard key={index} service={service} index={index} />
     ))}
     </div>
     </div>
