@@ -37,7 +37,7 @@ const Footer = () => {
           <motion.img src={WatsappImage}  whileHover={{ scale: 1.1 }}
         transition={{ duration:0.3}} alt='Instagram_image' className=' h-9 sm:h-10 md:h-10 lg:h-10'/>
         </a>
-        <a href="mailto:senrishabh887@gmail.com" className='overflow-y-hidden'>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=venserodetailingcenter@gmail.com" className='overflow-y-hidden'>
           <motion.img src={EmailImage}  whileHover={{ scale: 1.1 }}
         transition={{ duration:0.3}} alt='Instagram_image' className=' h-7 sm:h-8 md:h-8 lg:h-8'/>
         </a>

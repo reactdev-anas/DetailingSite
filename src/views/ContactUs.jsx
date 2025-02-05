@@ -28,7 +28,7 @@ const ContactUs = () => {
       });
 
       if (response.ok) {
-        setStatus('Message sent successfully!');
+        console.log('Message sent successfully!');
         setName('');
         setEmail('');
         setMessage('');
