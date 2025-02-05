@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaInstagram } from "react-icons/fa";
-import { FaWhatsapp } from "react-icons/fa6";
-import { MdOutlineEmail } from "react-icons/md";
 import Footer_logo from '../images/Car_logo_image.jpg'
+import EmailImage from '../images/email_logo.png'
+import WatsappImage from '../images/watsapp_logo.png'
+import InstagramImage from '../images/Instagram_Logo-removebg-preview.png'
 
 const Footer = () => {
   return (
@@ -26,17 +26,20 @@ const Footer = () => {
         />
       </motion.div>
       {/* Bottom Section - Social Media Icons */}
-      <motion.div className="flex justify-center space-x-6 mb-2"  initial={{ x: -100, opacity: 0 }}
+      <motion.div className="flex justify-center items-center space-x-6 mb-2"  initial={{ x: -100, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
         transition={{ duration: 1.1 }}>
-        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
-          <FaInstagram className="text-2xl text-cyan-600 "/> {/* Replace with actual Instagram icon */}
+        <a href="https://www.instagram.com/vensero_detailing_center?igsh=ZXFxMnVmMmJzemYx" target="_blank" rel="noopener noreferrer" className='overflow-y-hidden'>
+          <motion.img src={InstagramImage} whileHover={{ scale: 1.1 }}
+        transition={{ duration:0.3}} alt='Instagram_image' className='h-9 sm:h-10 md:h-10 lg:h-10 '/>
         </a>
-        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" >
-          <FaWhatsapp alt="Facebook" className="text-2xl text-cyan-600 " /> {/* Replace with actual Facebook icon */}
+        <a href="https://wa.me/7987205720" target="_blank" rel="noopener noreferrer"className='overflow-y-hidden' >
+          <motion.img src={WatsappImage}  whileHover={{ scale: 1.1 }}
+        transition={{ duration:0.3}} alt='Instagram_image' className=' h-9 sm:h-10 md:h-10 lg:h-10'/>
         </a>
-        <a href="mailto:someone@example.com" >
-          <MdOutlineEmail alt="Email" className="text-2xl text-cyan-600 " /> {/* Replace with actual Email icon */}
+        <a href="mailto:senrishabh887@gmail.com" className='overflow-y-hidden'>
+          <motion.img src={EmailImage}  whileHover={{ scale: 1.1 }}
+        transition={{ duration:0.3}} alt='Instagram_image' className=' h-7 sm:h-8 md:h-8 lg:h-8'/>
         </a>
       </motion.div>
     </footer>

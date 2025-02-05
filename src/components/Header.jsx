@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import HeaderLogo from '../images/Header_logo_image-removebg-preview.png'
 import { Link } from 'react-router'; 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <div className='bg-black w-screen min-h-[7vh] md:min-h-[9vh] lg:min-h-[9vh]  text-white font-semibold flex justify-between items-center px-10'>
-      <motion.h2 className='text-2xl' initial={{ x: -60, opacity: 0 }}
+    <div className='bg-black w-screen min-h-[7vh] md:min-h-[9vh] lg:min-h-[9vh]  text-white font-semibold flex justify-between items-center px-9 sm:px-9 md:px-10  lg:px-10'>
+        <motion.img src={HeaderLogo} initial={{ x: -60, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.8 }}>Logo</motion.h2>
+        transition={{ duration: 0.8 }} alt='header_logo' className=' w-20 h-16 sm:w-28 sm:h-16 md:w-28 md:h-16 lg:w-28 lg:h-20'/>
       {/* Hamburger Icon for Mobile */}
       <motion.div className='lg:hidden' initial={{ x: 60, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
