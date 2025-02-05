@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Footer_logo from '../images/Car_logo_image.jpg'
 import EmailImage from '../images/email_logo.png'
-import WatsappImage from '../images/watsapp_logo.png'
+import WatsappImage from '../images/Watsapp_logo.png'
 import InstagramImage from '../images/Instagram_Logo-removebg-preview.png'
 
 const Footer = () => {

@@ -8,7 +8,6 @@ const ContactUs = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
-  const [status, setStatus] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,10 +33,10 @@ const ContactUs = () => {
         setEmail('');
         setMessage('');
     } else {
-        setStatus('Error sending message.');
+        console.error('Error sending message.');
     }
 } catch (error) {
-    setStatus('Error sending message.');
+    console.error('Error sending message.');
 }
 };
 
@@ -70,7 +69,7 @@ const ContactUs = () => {
       </motion.div>
     </div>
      <Footer/>
-     {status && <p>{status}</p>}
+     
     </>
   )
 }
