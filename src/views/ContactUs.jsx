@@ -1,9 +1,46 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import icons from '../images/undraw_contact-us_kcoa.svg'
 import Footer from './Footer'
 
 const ContactUs = () => {
+
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [status, setStatus] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = {
+        name,
+        email,
+        message,
+    };
+
+    try {
+      const response = await fetch('http://localhost:5000/send-email', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setStatus('Message sent successfully!');
+        setName('');
+        setEmail('');
+        setMessage('');
+    } else {
+        setStatus('Error sending message.');
+    }
+} catch (error) {
+    setStatus('Error sending message.');
+}
+};
+
   return (
     <>
     <div className='w-screen min-h-[75vh] my-10 flex flex-col lg:flex-row'>
@@ -17,22 +54,23 @@ const ContactUs = () => {
         transition={{ duration: 0.8 }} >
         <div className="flex flex-col my-4">
           <label className='mb-2 font-semibold'>Name</label>
-          <input type='text' className='w-80 lg:w-[35vw] py-2  px-4 border  border-cyan-700 rounded' placeholder='Enter your name...' required/>
+          <input type='text' value={name}  onChange={(e) => setName(e.target.value)} className='w-80 lg:w-[35vw] py-2  px-4 border  border-cyan-700 rounded' placeholder='Enter your name...' required/>
         </div>
         <div className="flex flex-col my-4">
           <label className='mb-2 font-semibold'>Email</label>
-          <input type='email' className=' w-80 lg:w-[35vw] py-2  px-4 border border-cyan-700 rounded' placeholder='Enter your email...' required/>
+          <input type='email' value={email} onChange={(e) => setEmail(e.target.value)} className=' w-80 lg:w-[35vw] py-2  px-4 border border-cyan-700 rounded' placeholder='Enter your email...' required/>
         </div>
         <div className="flex flex-col my-4">
           <label className='mb-2 font-semibold'>Message</label>
-          <textarea className='w-80 lg:w-[35vw] py-2 h-40 px-4 border border-cyan-700 rounded' placeholder='Type your message here...'></textarea>
+          <textarea value={message} onChange={(e) => setMessage(e.target.value)} className='w-80 lg:w-[35vw] py-2 h-40 px-4 border border-cyan-700 rounded' placeholder='Type your message here...'></textarea>
         </div>
         <div className="btn mb-3">
-          <button className='w-80 lg:w-[35vw] py-2  px-4 bg-slate-500 transition ease-in-out delay-75 text-[#ffff] hover:bg-cyan-500 rounded'>Submit</button>
+          <button onClick={handleSubmit} className='w-80 lg:w-[35vw] py-2  px-4 bg-slate-500 transition ease-in-out delay-75 text-[#ffff] hover:bg-cyan-500 rounded'>Submit</button>
         </div>
       </motion.div>
     </div>
      <Footer/>
+     {status && <p>{status}</p>}
     </>
   )
 }
